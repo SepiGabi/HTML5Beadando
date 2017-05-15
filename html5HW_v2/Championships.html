@@ -1,0 +1,196 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Championships</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-table.css" />
+    <link rel="stylesheet" type="text/css" href="css/Custom.css" />
+    <script type="text/javascript" src="libs/jquery.min.js"></script>
+    <script type="text/javascript" src="libs/bootstrap.min.js"></script>
+    <script type="text/javascript" src="libs/bootstrap-table.js"></script>
+    <script type="text/javascript" src="js/Championships.js"></script>
+</head>
+<body>
+    <!--NAVIGATION-->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!--<a href="Championships.html">Championships</a>-->
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="Championships.html">Championships</a></li>
+                    <li><a href="Condition.html">Condition</a></li>
+                    <li><a href="ConditionType.html">Condition type</a></li>
+                    <li><a href="Season.html">Season</a></li>
+                    <li><a href="Seria.html">Seria</a></li>
+                    <li><a href="Sports.html">Sports</a></li>
+                    <li><a href="SportSpecialization.html">Sport specialization</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!--CONTENT-->
+    <div class="row" id="mainpagecontentdiv">
+        <div id="maker">
+            <h1>Készítette: Sepsei Gábor</h1>
+        </div>
+        <div id="buttons">
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#championshipsModal" data-whatever="@championship">Add a new championship</button>
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#championshipsModal" data-whatever="@apply">Apply</button>
+        </div>
+        <div id="championsdiv" class="row"></div>
+    </div>
+
+    <!--MODAL POPUPS-->
+    <div class="modal fade" id="championshipsModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="championshipsModalLabel"></h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div id="roundmodal">
+                    <div class="modal-body">
+                        <form action="http://94.177.230.203:8080/sport/rest/championship/addround" method="post" id="roundform">
+                            <div class="form-group">
+                                <label for="round-event" class="form-control-label">Event:</label>
+                                <select class="form-control" name="eventid" id="round-event"></select>
+                            </div>
+                            <div class="form-group">
+                                <label for="round-name" class="form-control-label">Name:</label>
+                                <input type="text" class="form-control" name="name" id="round-name">
+                            </div>
+                            <div class="form-group">
+                                <label for="round-description" class="form-control-label">Description:</label>
+                                <textarea class="form-control" name="description" id="round-description"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-primary" value="Send" form="roundform" />
+                    </div>
+                </div>
+                <div id="sportmodal">
+                    <div class="modal-body">
+                        <form id="sportform">
+                            <input type="hidden" value="" id="championshipid" />
+                            <div class="form-group">
+                                <label for="sport-name" class="form-control-label">Sport:</label>
+                                <select class="form-control" id="sport-name"></select>
+                            </div>
+                            <div class="form-group">
+                                <label for="sport-specialization" class="form-control-label">Specialization:</label>
+                                <select class="form-control" id="sport-specialization" multiple></select>
+                            </div>
+                            <div class="form-group">
+                                <label for="sport-conditiontype" class="form-control-label">ConditionType:</label>
+                                <select class="form-control" id="sport-conditiontype"></select>
+                            </div>
+                            <div class="form-group">
+                                <label for="sport-condition" class="form-control-label">Condition:</label>
+                                <select class="form-control" id="sport-condition" multiple></select>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" id="sportformsubmit" class="btn btn-primary">Send</button>
+                    </div>
+                </div>
+                <div id="championshipmodal">
+                    <div class="modal-body">
+                        <form id="championshipform">
+                            <div class="form-group">
+                                <label for="championship-name" class="form-control-label">Name:</label>
+                                <input type="text" class="form-control" id="championship-name">
+                            </div>
+                            <div class="form-group">
+                                <label for="championship-description" class="form-control-label">Description:</label>
+                                <input type="text" class="form-control" id="championship-description">
+                            </div>
+                            <div class="form-group">
+                                <label for="championship-startdate" class="form-control-label">Start date:</label>
+                                <input type="date" class="form-control" id="championship-startdate">
+                            </div>
+                            <div class="form-group">
+                                <label for="championship-enddate" class="form-control-label">End date:</label>
+                                <input type="date" class="form-control" id="championship-enddate">
+                            </div>
+                            <div class="form-group">
+                                <label for="championship-season" class="form-control-label">Season:</label>
+                                <select class="form-control" id="championship-season"></select>
+                            </div>
+                            <div class="form-group">
+                                <label for="championship-seria" class="form-control-label">Seria:</label>
+                                <select class="form-control" id="championship-seria"></select>
+                            </div>
+                            <div class="form-group">
+                                <label for="championship-conditiontype" class="form-control-label">ConditionType:</label>
+                                <select class="form-control" id="championship-conditiontype"></select>
+                            </div>
+                            <div class="form-group">
+                                <label for="championship-condition" class="form-control-label">Condition:</label>
+                                <select class="form-control" id="championship-condition" multiple></select>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" id="championshipformsubmit" class="btn btn-primary">Send</button>
+                    </div>
+                </div>
+                <div id="applymodal">
+                    <div class="modal-body">
+                        <form action="http://94.177.230.203:8080/sport/rest/entry/save" method="post" id="applyform">
+                            <div class="form-group">
+                                <label for="apply-id" class="form-control-label">Id:</label>
+                                <input type="text" class="form-control" name="id" id="apply-id">
+                            </div>
+                            <div class="form-group">
+                                <label for="apply-name" class="form-control-label">Name:</label>
+                                <input class="form-control" name="name" id="apply-name" />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-primary" value="Send" form="applyform" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="messageModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="messageModal">Message</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="messageModalMesage"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

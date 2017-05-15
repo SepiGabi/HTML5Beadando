@@ -1,0 +1,103 @@
+﻿html {
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+::-webkit-scrollbar {
+display: none;
+}
+
+body {
+    background: url('http://www.cssdeck.com/uploads/media/items/0/0Rs78ic.gif');
+}
+
+#tablediv {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5em;
+}
+
+#mainpagecontentdiv{
+    margin-top: 3em;
+}
+
+.contentdiv {
+    margin-top: 3em;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+#championsdiv {
+    margin-left: 2em;
+    margin-right: 2em;
+}
+
+.championshipcontainer {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+    /*border: double;
+    border-width: thin;*/
+    background-color: lightsteelblue !important;
+    overflow-y: auto;
+    height: 26em;
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+    box-shadow: 0 10px 6px -6px #777;
+    border-radius: 6px;
+}
+
+.glyphicon-collapse-down:hover {
+    transform: scale(1.4);
+    color: darkcyan;
+}
+
+.eventdiv:nth-child(even) {
+    background-color: darkgrey;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    margin-left: 25px;
+    margin-right: 25px;
+    padding: 10px;
+    /*box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;*/
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 6px;
+}
+
+.eventdiv:nth-child(odd) {
+    background-color: gainsboro;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    margin-left: 25px;
+    margin-right: 25px;
+    padding: 10px;
+    /*box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;*/
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 6px;
+}
+
+th {
+    background-color: #286090;
+    color: #fff;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: burlywood;
+}
+tbody tr:nth-child(even) {
+    background-color: coral;
+}
+
+#maker {
+    background-color: cornflowerblue;
+    text-align: center;
+    width: 100%;
+    padding-top: 3em;
+    padding-bottom: 3em;
+}
+
+#buttons {
+    background-color: darkkhaki;
+    padding: 100px;
+    text-align: center;
+}
+

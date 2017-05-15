@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conditions</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-table.css" />
+    <link rel="stylesheet" type="text/css" href="css/Custom.css" />
+    <script type="text/javascript" src="libs/jquery.min.js"></script>
+    <script type="text/javascript" src="libs/bootstrap.min.js"></script>
+    <script type="text/javascript" src="libs/bootstrap-table.js"></script>
+    <script type="text/javascript" src="js/Conditiontype.js"></script>
+</head>
+<body>
+    <!--NAVIGATION-->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!--<a href="Championships.html">Championships</a>-->
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="Championships.html">Championships</a></li>
+                    <li><a href="Condition.html">Condition</a></li>
+                    <li><a href="ConditionType.html">Condition type</a></li>
+                    <li><a href="Season.html">Season</a></li>
+                    <li><a href="Seria.html">Seria</a></li>
+                    <li><a href="Sports.html">Sports</a></li>
+                    <li><a href="SportSpecialization.html">Sport specialization</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!--CONTENT-->
+    <div class="row contentdiv">
+        <div class="col-md-4">
+            <h3>Add new condition type</h3>
+            <form id="conditiontypeform" action="http://94.177.230.203:8080/sport/rest/conditiontype/save" method="post">
+                <div class="form-group">
+                    <label for="conditiontype-name" class="form-control-label">Name:</label>
+                    <input type="text" class="form-control" name="name" id="conditiontype-name">
+                </div>
+                <div class="form-group">
+                    <label for="conditiontype-description" class="form-control-label">Description:</label>
+                    <input type="text" class="form-control" name="description" id="conditiontype-description">
+                </div>
+                <input type="submit" class="btn btn-primary" value="Send" />
+            </form>
+        </div>
+        <div class="col-md-8">
+            <h3>Existing condition types</h3>
+            <table id="conditiontypetable" data-toggle="table"
+                   data-search="true"
+                   data-show-refresh="true"
+                   data-show-toggle="true"
+                   data-show-columns="true"
+                   data-pagination="true"
+                   data-page-list="[5,10,25]"
+                   data-page-size="5">
+                <thead>
+                    <tr>
+                        <th data-sortable="true" data-field="name">Name</th>
+                        <th data-field="description">Description</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>
